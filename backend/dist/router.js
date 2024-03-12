@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.sitemateRouter = void 0;
+const express_1 = require("express");
+const controller_1 = require("./controller");
+const sitemateRouter = (0, express_1.Router)();
+exports.sitemateRouter = sitemateRouter;
+sitemateRouter.get("/", controller_1.getJsons);
+sitemateRouter.post("/", controller_1.postJson);
+sitemateRouter.put("/", controller_1.updateJsonById);
+sitemateRouter.delete("/", controller_1.deleteJsonById);
