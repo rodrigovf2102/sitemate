@@ -13,7 +13,6 @@ export async function getJsons(req: Request, res: Response){
 }
 
 export async function postJson(req: Request, res: Response){
-    console.log(req);
     try {
         const json : JsonObj = req.body
         service.postJson(json);

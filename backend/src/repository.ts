@@ -19,16 +19,17 @@ function postJsons(json : JsonObj){
 }
 
 function updateJsonById(updateJson : JsonObj){
-    let json = jsons.find(json => json.id === updateJson.id);
-    json = updateJson;
+    const json = jsons.find(json => json.id === updateJson.id);
+    const index = jsons.indexOf(json);
+    jsons[index] = updateJson;
     return updateJson;
 }
 
-function deleteJsonById(deleteJsonById : JsonObj){
-    const json = jsons.find(json => json.id === deleteJsonById.id);
+function deleteJsonById(deleteJson : JsonObj){
+    const json = jsons.find(json => json.id === deleteJson.id);
     const index = jsons.indexOf(json);
     jsons.splice(index,1);
-    return deleteJsonById;
+    return deleteJson;
 }
 
 export const repository = {

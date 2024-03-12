@@ -17,7 +17,6 @@ async function getJsons(req, res) {
 }
 exports.getJsons = getJsons;
 async function postJson(req, res) {
-    console.log(req);
     try {
         const json = req.body;
         service_1.service.postJson(json);

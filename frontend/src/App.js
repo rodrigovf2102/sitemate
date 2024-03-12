@@ -2,14 +2,15 @@ import { useState } from "react";
 import useGetJsons from "./hooks/api/useGetJsons";
 import usePostJson from "./hooks/api/usePostJsons";
 import styled from "styled-components";
+import useUpdateJson from "./hooks/api/useUpdateJson";
+import useDeleteJson from "./hooks/api/useDeleteJson";
 
 function App() {
   const { jsons, getJsons } = useGetJsons();
   const { postJson } = usePostJson()
+  const { updateJson } = useUpdateJson()
+  const { deleteJson } = useDeleteJson()
   const [json, setJson] = useState({});
-
-  console.log(jsons);
-  console.log(json);
 
   function preventAtt(event) {
     event.preventDefault();
@@ -31,7 +32,7 @@ function App() {
           <Input placeholder="Insert Id..." onChange={(e) => setJson({...json, id: e.target.value})}></Input>
           <Input placeholder="Insert Title..." onChange={(e) => setJson({...json, title: e.target.value})}></Input>
           <Input placeholder="Insert Description..." onChange={(e) => setJson({...json, description: e.target.value})}></Input>
-          <Button onClick={async ()=>{ await postJson(json); getJsons() }}>Post Jsons</Button>
+          <Button onClick={async ()=>{ await postJson(json); getJsons() }}>Post Json</Button>
         </form>
       </Box>
       <Box>
@@ -39,7 +40,13 @@ function App() {
           <Input placeholder="Insert Id..." onChange={(e) => setJson({...json, id: e.target.value})}></Input>
           <Input placeholder="Insert Title..." onChange={(e) => setJson({...json, title: e.target.value})}></Input>
           <Input placeholder="Insert Description..." onChange={(e) => setJson({...json, description: e.target.value})}></Input>
-          <Button onClick={async ()=>{ await postJson(json); getJsons() }}>Update Jsons</Button>
+          <Button onClick={async ()=>{ await updateJson(json); getJsons() }}>Update Json</Button>
+        </form>
+      </Box>
+      <Box>
+        <form onSubmit={preventAtt}>
+          <Input placeholder="Insert Id..." onChange={(e) => setJson({...json, id: e.target.value})}></Input>
+          <Button onClick={async ()=>{ await deleteJson(json); getJsons() }}>Delete Json</Button>
         </form>
       </Box>
     </Container>
@@ -63,7 +70,7 @@ const Button = styled.button`
 `
 
 const Box = styled.div`
-  width: 33%;
+  width: 20%;
   display: flex;
   flex-direction: column;
 `;

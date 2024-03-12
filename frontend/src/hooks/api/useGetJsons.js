@@ -7,7 +7,7 @@ export default function useGetJsons() {
     loading: getJsonsLoading,
     error: getJsonsError,
     act: getJsons,
-  } = useAsync(() => jsonApi.getJsons(), false);
+  } = useAsync(() => jsonApi.getJsons(), true);
 
   return {
     jsons: jsons,
